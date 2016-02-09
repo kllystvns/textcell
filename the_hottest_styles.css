@@ -21,6 +21,10 @@ body {
 article {
 	max-width: 900px;
 }
+.bold {
+	font-family: 'Helvetica Neue', helvetica, arial;
+	font-weight: bold;
+}
 
 .widget {
 	margin-top: 40px;

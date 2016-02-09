@@ -348,8 +348,7 @@ Organ.prototype = {
 
 	},
 
-	// setInterval is used instead of requestAnimationFrame because sadly 
-	// animating lots of DOM nodes can be done @ max 20 fps
+
 	startAnimation: function() {
 
 		this.startTime = Date.now() - this.timer;
