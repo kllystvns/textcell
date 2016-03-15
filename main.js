@@ -1,67 +1,54 @@
-GLOBAL = {
+// EXECUTION
 
-	// ACCEL: 0.08,
+  GLOBAL = {
 
-	// pixels per ms
-	SPEED: 0.13,
+    FRAMERATE: 14
 
-	// fast arithemetic growth
-	CELL_ATTRACTION: 0.08,
+  }
 
-	// slow geometric growth
-	ORIGIN_ATTRACTION: 0.7,
+// (function() {
+  
+  var contentsNodeList = document.querySelectorAll('.textcell');
+  var contents = [];
+  for ( var i = 0; i < contentsNodeList.length; i++ ) {
 
-	// fps
-	FRAMERATE: 15,
+    contents.push( contentsNodeList[ i ] );
 
-	// ms
-	DURATION: 8000,
+  }
 
-	LERP_TIME: 800
+  var organs = [];
+  contents.forEach( function( content, index ) {
 
-}
+    if ( index === 0 ) {
 
-var contentsNodeList = document.querySelectorAll('.content');
-var contents = [];
-for ( var i = 0; i < contentsNodeList.length; i++ ) {
+      var options = {
 
-	contents.push( contentsNodeList[ i ] );
+        speed: 0.13,
+        duration: 8000,
+        lerpTime: 800,
+        cellAttraction: 0.08,
+        originAttraction: 0.7
 
-}
+      };
 
-var organs = [];
-contents.forEach( function( content, index ) {
+    } else {
 
-	if ( index === 0 ) {
+      var options = {
 
-		var options = {
+        speed: 0.3,
+        duration: 2000,
+        lerpTime: 400,
+        cellAttraction: 0.5,
+        originAttraction: 0.7
 
-			// framerate: 15,
-			// speed: 0.13,
-			// duration: 8000,
-			// originAttraction: 0.7,
-			// cellAttraction: 0.08,
-			// lerpTime: 800
+      };
 
-		};
+    }
 
-	} else {
+    organs.push( new Organ( content, options ).init() );
 
-		var options = {
+  } );
 
-			// framerate: 15,
-			speed: 0.3,
-			duration: 2000,
-			cellAttraction: 0.5,
-			lerpTime: 400
+  var brain = new Brain( organs ).init();
 
-		};
-
-	}
-
-	organs.push( new Organ( content, options ).init() );
-
-} );
-
-var brain = new Brain( organs ).init();
-
+// })();
